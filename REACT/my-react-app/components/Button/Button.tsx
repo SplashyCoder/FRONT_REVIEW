@@ -1,9 +1,15 @@
 import "./button.css"
 
-export const Button = () =>{
+interface ButtonProps {
+    label: string,
+    parentMethod: () => void
+
+}
+
+export const Button = ({label, parentMethod}: ButtonProps) =>{
     return(
-        <button className='customButton' style={{ color:"blue", backgroundColor:"grey" }} onClick={() => setCount((count) => count + 1)}>
-            count is {count}
+        <button className='customButton' style={{ color:"blue", backgroundColor:"grey" }} onClick={parentMethod}>
+            {label}
         </button>  
 
     )    
