@@ -1,41 +1,21 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import useFetch from './hooks/useFetch'
 // import {Button} from '../components'
 
+const url = 'https://google.com'
+
 function App() {
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [err, setErr] = useState("")
 
-  const fecthData = async () => {
-
-    try {
-      const response = await fetch('https:')
-
-      if (!response.ok) {
-        throw new Error('Error al obtener datos')
-      }
+  const {data, error, loading} = useFetch(url)
 
 
-      const jsonData = await response.json()
-      setData(jsonData)
-
-    } catch (error) {
-      setErr(error as string)
-      
-    }
-  }
-  
-  useEffect(()=>{
-     fecthData()
-  },[])
-
-  if (isLoading) {
+  if (loading) {
     return <div>Loading...</div>
   }
 
-  if (err) {
-    return <div>Hay un err {err}</div>
+  if (error) {
+    return <div>Hay un err {error}</div>
   }
 
   return(
