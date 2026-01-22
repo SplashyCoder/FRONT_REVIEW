@@ -15,11 +15,13 @@ const useFetch = <T>(url: string):Params<T> => {
     const [error, setError] = useState<ErrorType>(null)
 
     useEffect(() => {
+
+      const controller = new AbortController();  
    
       const fectchData = async () => {
 
         try {
-            const response = await fetch(url)
+            const response = await fetch(url, controller)
             
             if(!response.ok){
                 throw new Error('')
@@ -34,6 +36,11 @@ const useFetch = <T>(url: string):Params<T> => {
         }
       }
       fectchData()
+
+      return () =>{
+        controller.abort()
+       }
+       
     }, [url])
     
 

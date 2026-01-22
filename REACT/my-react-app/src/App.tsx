@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import useFetch from './hooks/useFetch'
-// import {Button} from '../components'
 
 const url = 'https://google.com'
 
+interface Data {
+  name: string;
+  lastName: string;
+  age: number;
+}
+
 function App() {
 
-  const {data, error, loading} = useFetch(url)
+  const {data, error, loading} = useFetch<Data>(url)
 
 
   if (loading) {
@@ -15,7 +19,7 @@ function App() {
   }
 
   if (error) {
-    return <div>Hay un err {error}</div>
+    return <div>Hay un err {error.message}</div>
   }
 
   return(
