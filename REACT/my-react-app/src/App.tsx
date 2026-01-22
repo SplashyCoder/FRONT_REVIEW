@@ -1,30 +1,11 @@
 import './App.css'
-import useFetch from './hooks/useFetch'
+import { Button } from './components/index'
 
-const url = 'https://google.com'
-
-interface Data {
-  name: string;
-  lastName: string;
-  age: number;
-}
+const handelClick = () => console.log('hoa')
 
 function App() {
 
-  const {data, error, loading} = useFetch<Data>(url)
-
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>Hay un err {error.message}</div>
-  }
-
-  return(
-    <div>{JSON.stringify(data)}</div>
-  )
+  <Button label='hola' parentMethod={handelClick}/>
 
 }
 
