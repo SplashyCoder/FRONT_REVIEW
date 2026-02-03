@@ -1,11 +1,16 @@
 import './App.css'
 import { Button } from './components/index'
 
-const handelClick = () => console.log('hoa')
 
 function App() {
+  const handelClick = () => console.log('hoa')
 
-  <Button label='hola' parentMethod={handelClick}/>
+  return(
+
+    <Button label='hola' parentMethod={handelClick}/>
+
+  )
+  
 
 }
 
