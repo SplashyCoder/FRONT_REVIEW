@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import "./button.css"
 
 interface ButtonProps {
@@ -5,6 +6,12 @@ interface ButtonProps {
     parentMethod: () => void
 
 }
+
+interface ChildrenProps {
+    children: ReactNode
+}
+
+export const ColorRed = ({children}: ChildrenProps) => <div className="color-red">{children}</div>
 
 export const ButtonChildren = ({label}: Omit<ButtonProps, "parentMethod">) =>{
     return(
